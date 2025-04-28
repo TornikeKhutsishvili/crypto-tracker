@@ -62,5 +62,5 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
 
-  { path: '**', redirectTo: '' }, // should be last
+  { path: '**', redirectTo: '' },
 ];
