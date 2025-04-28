@@ -1,0 +1,31 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a [routerLink]="['/']" class="logo">CryptoTracker</a>
+  </div>
+
+  <!-- Burger Icon for Mobile -->
+  <div class="burger-icon" (click)="toggleNavMenu()">
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+    <span class="burger-line"></span>
+  </div>
+
+  <div class="nav-links" [class.show]="isNavMenuOpen">
+    <a [routerLink]="['/']" [routerLinkActive]="['active']">🏠 Home</a>
+
+    <a [routerLink]="['/most-visited']" [routerLinkActive]="['active']">🔥 Most Visited</a>
+
+    <ng-container *ngIf="auth.isLoggedIn(); else guestLinks">
+      <a [routerLink]="['/profile']" [routerLinkActive]="['active']">👤 Profile</a>
+      <a [routerLink]="['/exchanges']" [routerLinkActive]="['active']">💱 Exchanges</a>
+      <a [routerLink]="['/market-cap']" [routerLinkActive]="['active']">📊 Market Cap</a>
+      <a [routerLink]="['/favorites']" [routerLinkActive]="['active']">❤️ My Favorites</a>
+      <button type="button" class="logout-btn" (click)="logout()">🚪 Logout</button>
+    </ng-container>
+
+    <ng-template #guestLinks>
+      <a [routerLink]="['/login']" [routerLinkActive]="['active']">🔐 Login</a>
+      <a [routerLink]="['/register']" [routerLinkActive]="['active']">📝 Register</a>
+    </ng-template>
+  </div>
+</nav>

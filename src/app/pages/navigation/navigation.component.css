@@ -1,0 +1,116 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: #1e1e2f;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #00bcd4;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: inherit;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #00bcd4;
+}
+
+.logout-btn {
+  background-color: transparent;
+  border: 1px solid #ff5252;
+  padding: 0.4rem 1rem;
+  color: #ff5252;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #ff5252;
+  color: white;
+}
+
+.burger-icon {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  transition: transform 0.5s ease !important;
+}
+
+.burger-line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
+  transition: transform 0.5s ease !important;
+}
+
+@media (max-width: 1068px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-start;
+    width: 100%;
+    background: #1e1e2f;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease !important;
+  }
+
+  .nav-links.show {
+    display: flex;
+    transform: translateY(0);
+  }
+
+  .burger-icon {
+    display: flex;
+  }
+
+  /* Rotation effect for burger when menu is open */
+  .burger-icon.active {
+    transition: transform 0.5s ease !important;
+    transform: rotate(180deg);  /* Rotate the burger icon */
+  }
+
+  .burger-icon.active .burger-line:nth-child(1) {
+    transition: transform 0.5s ease !important;
+    transform: translateY(8px) rotate(45deg);  /* First line moves and rotates */
+  }
+
+  .burger-icon.active .burger-line:nth-child(2) {
+    transition: transform 0.5s ease !important;
+    opacity: 0;  /* Second line fades out */
+  }
+
+  .burger-icon.active .burger-line:nth-child(3) {
+    transition: transform 0.5s ease !important;
+    transform: translateY(-8px) rotate(-45deg);  /* Third line moves and rotates */
+  }
+}

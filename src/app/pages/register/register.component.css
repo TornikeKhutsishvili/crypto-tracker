@@ -1,0 +1,121 @@
+/* Main container */
+.auth-container {
+  background: linear-gradient(135deg, #b0b0b0, #8e8e8e);
+  min-height: 89.1vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Central form container */
+.container {
+  max-width: 500px;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Title */
+h2 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input group */
+.form-group {
+  width: 100%;
+}
+
+/* Input elements */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  background-color: #f9f9f9;
+  color: #333;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #00bcd4;
+  background-color: #fff;
+  outline: none;
+}
+
+input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* button */
+button {
+  padding: 12px;
+  border: none;
+  background-color: #00bcd4;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover:not(:disabled) {
+  background-color: #0195a4;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error {
+  color: #f44336;
+  font-size: 0.9rem;
+  /* margin-top: -10px; */
+  text-align: left;
+}
+
+/* Success message */
+.success {
+  color: #4CAF50;
+  font-size: 1rem;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Responsive for mobile devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 25px 20px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  input,
+  button {
+    font-size: 0.95rem;
+  }
+}

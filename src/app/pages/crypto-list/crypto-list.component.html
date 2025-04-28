@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>⭐ Top 50 Cryptocurrencies</h2>
+
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+
+  <div class="coin-list" *ngIf="!isLoading">
+    <div class="coin" *ngFor="let coin of coins" [routerLink]="['/crypto', coin.id]">
+    <!-- <div class="coin" *ngFor="let coin of coins" [routerLink]="['/crypto']" [queryParams]="{ id: coin.id }"> -->
+      <img [src]="coin.image" alt="{{ coin.name }}" />
+      <div class="coin-info">
+        <h3>{{ coin.name }}</h3>
+        <p>Price: ${{ coin.current_price }}</p>
+        <p>Market Cap: ${{ coin.market_cap | number }}</p>
+
+        <button type="button"
+                (click)="toggleFavorite(coin, $event)"
+                [class.favorite]="isFavorite(coin)">
+          <span *ngIf="isFavorite(coin)">❤️</span>
+          <span *ngIf="!isFavorite(coin)">🤍</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

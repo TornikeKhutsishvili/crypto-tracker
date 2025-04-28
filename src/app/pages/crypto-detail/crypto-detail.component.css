@@ -1,0 +1,122 @@
+/* main container */
+.container {
+  padding: 3rem;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Coin image */
+img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+/* title and text */
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+strong {
+  color: #4CAF50;
+  font-weight: 600;
+}
+
+.desc {
+  text-align: center;
+}
+
+/* chart style */
+canvas {
+  margin-top: 2rem;
+  width: 100% !important;
+  height: 1000px !important;
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box !important;
+  transition: transform 0.3s ease-in-out;
+}
+
+canvas:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Responsive Design */
+
+/* Tablets */
+@media (max-width: 1023px) {
+  canvas {
+    height: 700px !important;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .container {
+    padding: 2rem;
+  }
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  canvas {
+    height: 500px !important;
+  }
+}
+
+/* Smaller Mobile Devices */
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+
+  canvas {
+    height: 200px !important;
+  }
+}

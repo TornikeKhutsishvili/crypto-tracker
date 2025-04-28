@@ -1,0 +1,16 @@
+<div class="container">
+  <h2>Your Favorite Cryptocurrencies</h2>
+
+  <div *ngIf="favorites.length === 0" class="loading">No favorites yet.</div>
+
+  <div class="coin-list" *ngIf="favorites.length > 0">
+    <div class="coin" *ngFor="let coin of favorites">
+      <img [src]="coin.image" alt="{{ coin.name }}" />
+      <div class="coin-info">
+        <h3>{{ coin.name }}</h3>
+        <p>Price: ${{ coin.current_price }}</p>
+        <p>Market Cap: ${{ coin.market_cap | number }}</p>
+      </div>
+    </div>
+  </div>
+</div>

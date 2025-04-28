@@ -1,0 +1,81 @@
+<div class="market-cap-container">
+  <h2>📊 Top 50 Cryptocurrencies by Market Cap</h2>
+
+  <div *ngIf="loading" class="loading">Loading...</div>
+
+  <div class="input-group mb-3">
+    <span class="input-group-text">🔍</span>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by name"
+      [(ngModel)]="searchQuery"
+    />
+  </div>
+
+  <div class="table-responsive" *ngIf="!loading">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Coin</th>
+
+          <!-- Price -->
+          <th (click)="sortBy('current_price')" style="cursor: pointer;">
+            Price
+            <span>
+              {{
+                sortField === 'current_price'
+                  ? sortDirection === 'asc' ? '⬆' : '⬇'
+                  : '⬍'
+              }}
+            </span>
+          </th>
+
+          <!-- Market Cap -->
+          <th (click)="sortBy('market_cap')" style="cursor: pointer;">
+            Market Cap
+            <span>
+              {{
+                sortField === 'market_cap'
+                  ? sortDirection === 'asc' ? '⬆' : '⬇'
+                  : '⬍'
+              }}
+            </span>
+          </th>
+
+          <!-- 24h Change -->
+          <th (click)="sortBy('price_change_percentage_24h')" style="cursor: pointer;">
+            24h Change
+            <span>
+              {{
+                sortField === 'price_change_percentage_24h'
+                  ? sortDirection === 'asc' ? '⬆' : '⬇'
+                  : '⬍'
+              }}
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let coin of filteredCryptos; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>
+            <img [src]="coin.image" alt="{{ coin.name }}" width="20" height="20" />
+            {{ coin.name }}
+          </td>
+          <td>${{ coin.current_price | number: '1.2-2' }}</td>
+          <td>${{ coin.market_cap | number }}</td>
+          <td
+            [ngClass]="{
+              positive: coin.price_change_percentage_24h >= 0,
+              negative: coin.price_change_percentage_24h < 0
+            }"
+          >
+            {{ coin.price_change_percentage_24h | number: '1.2-2' }}%
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

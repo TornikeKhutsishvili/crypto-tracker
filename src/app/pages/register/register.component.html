@@ -1,0 +1,61 @@
+<div class="auth-container">
+  <div class="container">
+    <h2>Register</h2>
+    <form (ngSubmit)="register()">
+      <div class="form-group">
+        <input
+          type="text"
+          [(ngModel)]="name"
+          name="name"
+          placeholder="Name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="Email"
+          required
+          [pattern]="emailPattern"
+        />
+        <div *ngIf="email && !email.includes('@')" class="error">
+          Email must contain "&#64;" symbol.
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="password"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Password"
+          required
+          minlength="6"
+          [pattern]="passwordPattern"
+          (input)="checkUpperCase()"
+        />
+        <div *ngIf="!isUpperCase" class="error">
+          Password must contain at least one uppercase letter, one digit, and be at least 6 characters long.
+        </div>
+      </div>
+
+      <!-- confirmPassword will only be shown if password has at least 6 characters -->
+      <div *ngIf="password.length >= 6 && isUpperCase" class="form-group">
+        <input
+          type="password"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          required
+        />
+        <div *ngIf="confirmPassword && confirmPassword !== password" class="error">
+          Passwords do not match.
+        </div>
+      </div>
+
+      <button class="btn btn-primary w-50" type="submit" [disabled]="!isFormValid()">Register</button>
+      <p *ngIf="error" class="error">{{ error }}</p>
+    </form>
+  </div>
+</div>

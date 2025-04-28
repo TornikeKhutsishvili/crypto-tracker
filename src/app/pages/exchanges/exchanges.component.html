@@ -1,0 +1,50 @@
+<div class="container py-4">
+  <h2 class="text-center mb-4 text-primary fw-bold display-6">📊 Top Crypto Exchanges</h2>
+
+  <!-- Search Bar -->
+  <div class="input-group mb-3">
+    <span class="input-group-text">🔍</span>
+    <input type="text" class="form-control"
+          placeholder="Search exchanges..."
+          [(ngModel)]="searchTerm"
+          (input)="onSearchChange()">
+  </div>
+
+  <!-- Table -->
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered table-striped text-center align-middle shadow">
+      <thead class="table-dark">
+        <tr>
+          <th>#</th>
+          <th>Exchange</th>
+          <th>Trust Score</th>
+          <th>24h Volume (BTC)</th>
+          <th>country</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let exchange of filteredExchanges | paginate: { id: 'exchanges', itemsPerPage: itemsPerPage, currentPage: currentPage }; let i = index" @fadeIn>
+          <td>{{ (currentPage - 1) * itemsPerPage + i + 1 }}</td>
+          <td class="d-flex align-items-center justify-content-center gap-2">
+            <img [src]="exchange.image"
+                alt="{{ exchange.name }}"
+                width="30" height="30"
+                class="rounded-circle shadow-sm">
+            <span class="fw-semibold">{{ exchange.name }}</span>
+          </td>
+          <td [ngClass]="exchange.trust_score | trustScorePipe">{{ exchange.trust_score }}</td>
+          <td>{{ exchange.trade_volume_24h_btc | number:'1.0-2' }} BTC</td>
+          <td>{{ exchange.country }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <pagination-controls
+  *ngIf="filteredExchanges.length > 0"
+  [id]="'exchanges'"
+  [responsive]="true"
+  (pageChange)="onPageChange($event)">
+  </pagination-controls>
+</div>

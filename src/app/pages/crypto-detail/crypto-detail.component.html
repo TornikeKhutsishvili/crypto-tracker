@@ -1,0 +1,11 @@
+<div class="container" *ngIf="coin">
+  <h2>{{ coin.name }}</h2>
+  <img [src]="coin.image.large" alt="{{ coin.name }}" />
+  <p><strong>Symbol:</strong> {{ coin.symbol }}</p>
+  <p><strong>Current Price:</strong> ${{ coin.market_data.current_price.usd }}</p>
+  <p><strong>Market Cap:</strong> ${{ coin.market_data.market_cap.usd | number }}</p>
+  <p class="desc"><strong>Description</strong></p>
+  <p><span [innerHTML]="coin.description.en"></span></p>
+
+  <canvas id="coinChart"></canvas>
+</div>

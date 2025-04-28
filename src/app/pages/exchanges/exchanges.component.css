@@ -1,0 +1,170 @@
+/* container for page */
+.container {
+  max-width: 100%;
+  padding: 0 20px;
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease;
+}
+
+/* title */
+.container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-text-color);
+  margin-bottom: 20px;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+/* serch */
+.input-group-text {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--primary-text-color);
+}
+
+.input-group .form-control {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid var(--border-color) !important;
+  background-color: var(--input-bg) !important;
+  color: var(--primary-text-color);
+  border-radius: 8px;
+  transition: border 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+/* form focus */
+.input-group .form-control:focus {
+  border-color: var(--highlight-color) !important;
+}
+
+/* style of placeholder */
+.form-control::placeholder {
+  color: var(--primary-text-color) !important;
+}
+
+/* table design */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  background-color: var(--table-bg) !important;
+  color: var(--primary-text-color) !important;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* table */
+.table th,
+.table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid var(--border-color) !important;
+}
+
+/* hover for table */
+.table-hover tbody tr:hover {
+  background-color: var(--hover-bg) !important;
+}
+
+/* Alternative background for rows */
+.table-striped tbody tr:nth-child(odd) {
+  background-color: var(--table-stripe-bg) !important;
+}
+
+/* Images style in the table */
+.table img {
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Trust column style */
+.table td.ngClass {
+  font-weight: 600;
+  color: var(--trust-score-color);
+}
+
+/* Pagination elements */
+pagination-controls span {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  color: var(--primary-text-color) !important;
+}
+
+/* Pagination panel design */
+pagination-controls ul {
+  justify-content: center;
+  gap: 5px;
+}
+
+pagination-controls li {
+  list-style-type: none;
+}
+
+/* responsive for mobile version */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  .input-group {
+    max-width: 100%;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px;
+  }
+
+  .table img {
+    width: 25px;
+    height: 25px;
+  }
+
+  /* Pagination on mobile */
+  pagination-controls ul {
+    gap: 3px;
+  }
+}
+
+/* Light/Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: var(--dark-bg-color);
+  }
+
+  .table {
+    background-color: var(--dark-table-bg);
+    color: var(--dark-primary-text-color);
+  }
+
+  .table-hover tbody tr:hover {
+    background-color: var(--dark-hover-bg) !important;
+  }
+
+  .table-striped tbody tr:nth-child(odd) {
+    background-color: var(--dark-table-stripe-bg) !important;
+  }
+
+  .input-group-text {
+    background-color: var(--dark-input-bg);
+    border: 1px solid var(--dark-border-color);
+  }
+
+  .input-group .form-control {
+    background-color: var(--dark-input-bg) !important;
+    color: var(--dark-primary-text-color);
+  }
+
+  .form-control::placeholder {
+    color: var(--dark-placeholder-color) !important;
+  }
+
+  pagination-controls span {
+    color: var(--dark-primary-text-color) !important;
+  }
+}

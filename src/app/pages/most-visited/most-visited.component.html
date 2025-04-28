@@ -1,0 +1,12 @@
+<div class="card p-3">
+  <h2 class="text-xl font-bold mb-2">🔥 Most Visited</h2>
+  <ul class="space-y-2">
+    <li *ngFor="let coin of mostVisited" class="flex items-center justify-between border-b pb-2">
+      <div class="flex items-center gap-2">
+        <img [src]="coin.image" alt="{{ coin.name }}" width="24" height="24" />
+        <span class="coin-name">{{ coin.name }}</span>
+      </div>
+      <span class="text-green-600">${{ coin.current_price | number: '1.2-2' }}</span>
+    </li>
+  </ul>
+</div>
