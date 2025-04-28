@@ -1,59 +1,71 @@
-# CryptoTracker
+# Crypto Tracker
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.9.
+**Crypto Tracker** is an Angular application that allows you to view cryptocurrency prices, trading history, and other important information for various cryptocurrencies such as Bitcoin, Ethereum, and others.
 
-## Development server
+## How to Run the Project
 
-To start a local development server, run:
+1. **Clone the Project**:
+   - Start by cloning the project to your local machine:
 
-```bash
-ng serve
-```
+     ```bash
+     git clone https://github.com/TornikeKhutsishvili/crypto-tracker.git
+     ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+2. **Install Dependencies**:
+   - Navigate to the project folder:
 
-## Code scaffolding
+     ```bash
+     cd crypto-tracker
+     ```
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+   - Install the project dependencies:
 
-```bash
-ng generate component component-name
-```
+     ```bash
+     npm install
+     ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. **Run the Project**:
+   - Start the application with the following command:
 
-```bash
-ng generate --help
-```
+     ```bash
+     ng serve
+     ```
 
-## Building
+   - The application will be available in your browser at:
 
-To build the project run:
+     ```
+     http://localhost:4200/
+     ```
 
-```bash
-ng build
-```
+## Features
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- **Cryptocurrency Price Tracking**: View the current prices, history, and trends of cryptocurrencies.
+- **User Profile Editing**: Register, log in, and edit user profile information.
+- **Favorites System**: Save your favorite cryptocurrencies for quick access.
+- **Market Cup Page**: View various crypto market statistics and data.
 
-## Running unit tests
+## Technologies and Tools
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- **Angular 19**: For component management, file handling, and data interaction.
+- **Bootstrap**: For responsive and clean UI design.
+- **TypeScript**: For type-safe JavaScript programming.
+- **API Integration**: For retrieving real-time cryptocurrency data.
+- **Responsive Design** — Fully responsive layout optimized for both mobile and desktop devices.
 
-```bash
-ng test
-```
 
-## Running end-to-end tests
+## Technologies Used
 
-For end-to-end (e2e) testing, run:
+- **Angular (with components, services, and RxJS)**
+- **TypeScript**
+- **HTML5, CSS3**
+- **Cryptocurrency API (RESTful API)**
 
-```bash
-ng e2e
-```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Project Maintenance
 
-## Additional Resources
+- **Tasks**: Managed through GitHub with regular commits.
+- **Updates**: Managed and improved based on ongoing feature development.
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Author
+
+**Tornike Khutsishvili** - Project Creator
