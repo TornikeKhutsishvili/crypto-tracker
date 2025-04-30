@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ export class AuthService {
   private readonly STORAGE_KEY = 'auth_user';
   public showMarketCap = false; // Added to determine if the input is provided
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   // Registration function
   register(user: any): boolean {
@@ -89,29 +90,35 @@ export class AuthService {
 
   // Safe data retrieval
   private safeGetItem(key: string): string | null {
-    try {
-      return localStorage.getItem(key);
-    } catch (error) {
-      console.error(`Error getting item ${key} from localStorage`, error);
-      return null;
+    if (isPlatformBrowser(this.platformId)) {
+      try {
+        return localStorage.getItem(key);
+      } catch (error) {
+        console.error(`Error getting item ${key} from localStorage`, error);
+      }
     }
+    return null;
   }
 
   // Safe data addition
   private safeSetItem(key: string, value: string): void {
-    try {
-      localStorage.setItem(key, value);
-    } catch (error) {
-      console.error(`Error setting item ${key} in localStorage`, error);
+    if (isPlatformBrowser(this.platformId)) {
+      try {
+        localStorage.setItem(key, value);
+      } catch (error) {
+        console.error(`Error setting item ${key} in localStorage`, error);
+      }
     }
   }
 
   // Safe data deletion
   private safeRemoveItem(key: string): void {
-    try {
-      localStorage.removeItem(key);
-    } catch (error) {
-      console.error(`Error removing item ${key} from localStorage`, error);
+    if (isPlatformBrowser(this.platformId)) {
+      try {
+        localStorage.removeItem(key);
+      } catch (error) {
+        console.error(`Error removing item ${key} from localStorage`, error);
+      }
     }
   }
 }

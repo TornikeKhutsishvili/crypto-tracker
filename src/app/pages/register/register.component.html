@@ -11,6 +11,7 @@
           required
         />
       </div>
+
       <div class="form-group">
         <input
           type="email"
@@ -24,6 +25,7 @@
           Email must contain "&#64;" symbol.
         </div>
       </div>
+
       <div class="form-group">
         <input
           type="password"
@@ -40,7 +42,6 @@
         </div>
       </div>
 
-      <!-- confirmPassword will only be shown if password has at least 6 characters -->
       <div *ngIf="password.length >= 6 && isUpperCase" class="form-group">
         <input
           type="password"
@@ -54,7 +55,14 @@
         </div>
       </div>
 
-      <button class="btn btn-primary w-50" type="submit" [disabled]="!isFormValid()">Register</button>
+      <button
+        class="btn btn-primary w-50"
+        type="submit"
+        [disabled]="!isFormValid()"
+      >
+        Register
+      </button>
+
       <p *ngIf="error" class="error">{{ error }}</p>
     </form>
   </div>

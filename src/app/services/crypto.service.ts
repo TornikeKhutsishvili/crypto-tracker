@@ -21,7 +21,7 @@ export class CryptoService {
   }
 
   getCoinById(id: string) {
-    if (!this.isBrowser || typeof window === 'undefined') {
+    if (!this.isBrowser) {
       return EMPTY;
     }
     return this.http
@@ -30,7 +30,7 @@ export class CryptoService {
   }
 
   getCoinChart(id: string) {
-    if (!this.isBrowser || typeof window === 'undefined') {
+    if (!this.isBrowser) {
       return EMPTY;
     }
     return this.http
@@ -40,17 +40,17 @@ export class CryptoService {
 
 
   getTopCoins(): Observable<Crypto[]> {
-    if (!this.isBrowser || typeof window === 'undefined') {
+    if (!this.isBrowser) {
       return EMPTY;
     }
     return this.http
-      .get<Crypto[]>(`${this.baseUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=50&page=1`)
+      .get<Crypto[]>(`${this.baseUrl}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1`)
       .pipe(take(1));
   }
 
 
   getExchanges(): Observable<any[]> {
-    if (!this.isBrowser || typeof window === 'undefined') {
+    if (!this.isBrowser) {
       return EMPTY;
     }
     return this.http

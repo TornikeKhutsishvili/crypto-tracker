@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
     CommonModule,
     FormsModule,
     RouterModule,
+    ReactiveFormsModule
   ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
@@ -21,67 +22,59 @@ export class RegisterComponent {
   email = '';
   password = '';
   confirmPassword = '';
+  successMessage: string | null = null;
   error: string | null = null;
-  showPassword: boolean = false;
   isUpperCase: boolean = false;
 
-  // Regular expression to ensure the password contains at least one uppercase letter
-  passwordPattern: string = '(?=.*[A-Z])(?=.*\d)';
+  passwordPattern = '(?=.*[A-Z])(?=.*\\d)';
+  emailPattern = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$';
 
-  // Regular expression for email validation
-  emailPattern: string = '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$';
-
-  constructor(
-    private auth: AuthService,
-    private router: Router,
-  ) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   checkUpperCase() {
-    if (this.password && this.password[0] === this.password[0].toUpperCase()) {
-      this.isUpperCase = true;
-    } else {
-      this.isUpperCase = false;
-    }
+    this.isUpperCase = /[A-Z]/.test(this.password);
   }
 
   register(): void {
-    // Password validation
+    this.successMessage = null;
+    this.error = null;
+
     if (this.password !== this.confirmPassword) {
-      this.error = 'Passwords do not match!'; // Only string
+      this.error = 'Passwords do not match!';
       return;
     }
 
-    // Email validation
     if (!this.email.match(this.emailPattern)) {
       this.error = 'Please enter a valid email address.';
       return;
     }
 
-    // Password validation for uppercase letter
     if (!this.password.match(this.passwordPattern)) {
-      this.error = 'Password must contain at least one uppercase letter.';
+      this.error = 'Password must contain at least one uppercase letter and one digit.';
       return;
     }
 
-    // Registration process
     const success = this.auth.register({
       name: this.name,
       email: this.email,
       password: this.password,
+      confirmPassword: this.confirmPassword,
     });
 
     if (success) {
-      this.router.navigate(['/login']);
+      this.successMessage = 'Registration successful! Redirecting to login...';
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 1500);
     } else {
-      this.error = 'User already exists!'; // Only string
+      this.error = 'User already exists!';
     }
   }
 
-  // Form validation
-  isFormValid(): string | boolean {
+  isFormValid(): boolean {
     return (
-      this.name &&
-      this.email &&
+      !!this.name &&
+      !!this.email &&
       this.password.length >= 6 &&
       this.password === this.confirmPassword &&
       !!this.email.match(this.emailPattern) &&

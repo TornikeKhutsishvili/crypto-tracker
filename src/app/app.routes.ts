@@ -9,9 +9,29 @@ export const routes: Routes = [
   { path: 'crypto/:id',
     loadComponent: () => import('./pages/crypto-detail/crypto-detail.component').then((m) => m.CryptoDetailComponent),
     data: {
-      prerender: true,
       getPrerenderParams: () => {
-        return { id: '1' };  // Return necessary parameters for prerendering
+        return [
+          { id: 'bitcoin' },
+          { id: 'ethereum' },
+          { id: 'tether' },
+          { id: 'xrp' },
+          { id: 'bnb' },
+          { id: 'solana' },
+          { id: 'usdc' },
+          { id: 'dogecoin' },
+          { id: 'cardano' },
+          { id: 'tron' },
+          { id: 'lido stacked ether' },
+          { id: 'wrapped bitcoin' },
+          { id: 'sui' },
+          { id: 'chainlink' },
+          { id: 'avalanche' },
+          { id: 'leo token' },
+          { id: 'stellar' },
+          { id: 'toncoin' },
+          { id: 'shiba inu' },
+          { id: 'hedera' }
+        ];
       }
     }
   },
