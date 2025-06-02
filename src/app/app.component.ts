@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     if (isPlatformBrowser(this.platformId)) {
       const LAST_CLEAN_KEY = 'lastLocalStorageClean';
       const now = new Date().getTime();
-      const FIVE_DAYS = 1000 * 60 * 60 * 24 * 2;
+      const FIVE_DAYS = 1000 * 60 * 60 * 24 * 3;
 
       const lastCleanStr = localStorage.getItem(LAST_CLEAN_KEY);
       const lastClean = lastCleanStr ? parseInt(lastCleanStr, 10) : 0;

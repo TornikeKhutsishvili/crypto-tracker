@@ -2,6 +2,10 @@ import { authGuard } from './guards/auth.guard';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+  { path: '',
+    loadComponent: () => import('./pages/crypto-list/crypto-list.component').then((m) => m.CryptoListComponent)
+  },
+
   { path: 'home',
     loadComponent: () => import('./pages/crypto-list/crypto-list.component').then((m) => m.CryptoListComponent)
   },
