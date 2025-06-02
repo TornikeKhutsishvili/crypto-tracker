@@ -2,7 +2,7 @@ import { authGuard } from './guards/auth.guard';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '',
+  { path: 'home',
     loadComponent: () => import('./pages/crypto-list/crypto-list.component').then((m) => m.CryptoListComponent)
   },
 
@@ -52,7 +52,8 @@ export const routes: Routes = [
 
   {
     path: 'reset-password',
-    loadComponent: () => import('./pages/reset-password/reset-password.component').then(m => m.ResetPasswordComponent)
+    loadComponent: () => import('./pages/reset-password/reset-password.component').then(m => m.ResetPasswordComponent),
+    canActivate: [authGuard]
   },
 
   {
@@ -63,18 +64,15 @@ export const routes: Routes = [
 
   {
     path: 'market-cap',
-    loadComponent: () => import('./pages/market-cap/market-cap.component').then(m => m.MarketCapComponent),
-    canActivate: [authGuard]
+    loadComponent: () => import('./pages/market-cap/market-cap.component').then(m => m.MarketCapComponent)
   },
 
   { path: 'exchanges',
-    loadComponent: () => import('./pages/exchanges/exchanges.component').then(m => m.ExchangesComponent),
-    canActivate: [authGuard]
+    loadComponent: () => import('./pages/exchanges/exchanges.component').then(m => m.ExchangesComponent)
   },
 
   { path: 'most-visited',
-    loadComponent: () => import('./pages/most-visited/most-visited.component').then(m => m.MostVisitedComponent),
-    canActivate: [authGuard]
+    loadComponent: () => import('./pages/most-visited/most-visited.component').then(m => m.MostVisitedComponent)
   },
 
   { path: 'favorites',

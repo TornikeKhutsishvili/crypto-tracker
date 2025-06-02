@@ -25,7 +25,7 @@ export class LoginComponent {
   login() {
     const success = this.auth.login(this.email, this.password);
     if (success) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/profile']);
     } else {
       this.error = 'Invalid email or password';
     }

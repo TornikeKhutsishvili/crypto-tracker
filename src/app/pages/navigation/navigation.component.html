@@ -1,6 +1,6 @@
 <nav class="navbar">
   <div class="navbar-brand">
-    <a [routerLink]="['/']" class="logo">CryptoTracker</a>
+    <a [routerLink]="['/home']" class="logo">CryptoTracker</a>
   </div>
 
   <!-- Burger Icon for Mobile -->
@@ -11,14 +11,13 @@
   </div>
 
   <div class="nav-links" [class.show]="isNavMenuOpen">
-    <a [routerLink]="['/']" [routerLinkActive]="['active']">🏠 Home</a>
-
+    <a [routerLink]="['/home']" [routerLinkActive]="['active']">🏠 Home</a>
     <a [routerLink]="['/most-visited']" [routerLinkActive]="['active']">🔥 Most Visited</a>
+    <a [routerLink]="['/exchanges']" [routerLinkActive]="['active']">💱 Exchanges</a>
+    <a [routerLink]="['/market-cap']" [routerLinkActive]="['active']">📊 Market Cap</a>
 
     <ng-container *ngIf="auth.isLoggedIn(); else guestLinks">
       <a [routerLink]="['/profile']" [routerLinkActive]="['active']">👤 Profile</a>
-      <a [routerLink]="['/exchanges']" [routerLinkActive]="['active']">💱 Exchanges</a>
-      <a [routerLink]="['/market-cap']" [routerLinkActive]="['active']">📊 Market Cap</a>
       <a [routerLink]="['/favorites']" [routerLinkActive]="['active']">❤️ My Favorites</a>
       <button type="button" class="logout-btn" (click)="logout()">🚪 Logout</button>
     </ng-container>
